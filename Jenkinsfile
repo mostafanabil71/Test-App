@@ -1,42 +1,38 @@
-groovy
 pipeline {
     agent any 
-
+    
     stages {
         stage('Clone Repository') {
             steps {
-                        git branch: 'master', url: 'https://github.com/mostafanabil71/Test-App.git'
+                git branch: 'master', url: 'https://github.com/mostafanabil71/Test-App.git'
             }
         }
         
         stage('Install Node.js Dependencies') {
             steps {
-                // Ensure you have Node.js installed on your Jenkins
                 sh 'npm install'
             }
         }
         
         stage('Build Application') {
             steps {
-                sh 'npm run build' // Adjust this if you have a build script
+                sh 'npm run build'
             }
         }
         
         stage('Package with Maven') {
             steps {
-                // Make sure your pom.xml is set up properly for packaging
-                sh 'mvn clean package' // This assumes you have a Maven project to generate a JAR
+                sh 'mvn clean package'
             }
-        }
-    }
-    
-    post {
-        success {
-            archiveArtifacts artifacts: '**/*.jar', fingerprint: true
-            echo 'Packaging succeeded!'
-        }
-        failure {
-            echo 'Packaging failed!'
+            post {
+                success {
+                    archiveArtifacts artifacts: '*/.jar', fingerprint: true
+                    echo 'Packaging succeeded!'
+                }
+                failure {
+                    echo 'Packaging failed!'
+                }
+            }
         }
     }
 }
