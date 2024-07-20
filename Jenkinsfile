@@ -5,7 +5,6 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/mostafanabil71/test.git'
             }
         }
         
