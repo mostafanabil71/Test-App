@@ -1,29 +1,20 @@
 pipeline {
     agent any
+
     stages {
         stage('Checkout') {
             steps {
-                // This step checks out the code from your repository
-                checkout scm
+                git branch: 'master', credentialsId: 'your-credentials-id', url: 'https://github.com/mostafanabil71/test.git' // Replace with your credentials and URL if needed
             }
         }
         stage('Build') {
             steps {
-                // This step runs Maven to clean and install the project
-                sh 'mvn clean install'
+                sh 'mvn clean install' // Assuming Maven is now available
             }
         }
         stage('Package') {
-            steps {
-                // This step packages the project into a JAR file
-                sh 'mvn package'
-            }
+            // Steps to package your application
         }
-    }
-    post {
-        success {
-            // This step archives the JAR file as a build artifact
-            archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
-        }
+        // Add a 'Deploy' stage if needed
     }
 }
