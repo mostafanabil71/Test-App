@@ -4,7 +4,6 @@
   "description": "Hello App will be used as a test app which will be used in CICDE Pipeline Process",
   "main": "app.js",
   "scripts": {
-    "build": "node app.js"
   },
   "author": "Mostafa Nabil",
   "license": "ISC",
