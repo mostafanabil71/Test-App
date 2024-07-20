@@ -5,6 +5,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
+                        git branch: 'master', url: 'https://github.com/mostafanabil71/Test-App.git'
             }
         }
         
