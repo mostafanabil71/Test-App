@@ -4,8 +4,7 @@
   "description": "Hello App will be used as a test app which will be used in CICDE Pipeline Process",
   "main": "app.js",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "build:prod": "npm run build && npm prune && npm ci --production"
+    "build": "/usr/local/bin/tsc -p tsconfig.json"
   },
   "author": "Mostafa Nabil",
   "license": "ISC",
