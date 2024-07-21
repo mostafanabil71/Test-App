@@ -9,16 +9,14 @@ pipeline {
         }
         
         stage('Install Node.js Dependencies') {
-            steps {
-                dir('./Hello-app/package.js') {
+            steps {{
                     sh 'npm install'
                 }
             }
         }
         
         stage('Build Application') {
-            steps {
-                dir('./Hello-app/app.js') {
+            steps { {
                     sh 'npm run build'
                 }
             }
