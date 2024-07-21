@@ -10,21 +10,24 @@ pipeline {
         
         stage('Install Node.js Dependencies') {
             steps {
-                sh 'npm install'
+                dir('./package.js') {
+                    sh 'npm install'
+                }
             }
         }
         
         stage('Build Application') {
             steps {
-                sh 'npm run build'
+                dir('./app.js') {
+                    sh 'npm run build'
+                }
             }
         }
         
         stage('Package with Maven') {
             steps {
                 sh 'mvn clean package -Dmaven.javadoc.skip=true -Dmaven.install.skip=true -Dmaven.test.skip=true'
-                // Archive the generated JAR file
-                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+                archiveArtifacts artifacts: 'path/to/your/app/target/*.jar', fingerprint: true
             }
             post {
                 success {
