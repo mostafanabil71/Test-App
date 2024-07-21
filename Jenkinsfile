@@ -1,5 +1,5 @@
 pipeline {
-    agent any 
+    agent any
     
     stages {
         stage('Clone Repository') {
@@ -22,15 +22,12 @@ pipeline {
         
         stage('Package with Maven') {
             steps {
-                // Run npm command to create a production-ready build
-                sh 'npm run build:prod'
-                
-                // Use exec command to run Maven
-                exec cmd: 'mvn clean package', returnStatus: true
+                sh 'mvn clean package -Dmaven.javadoc.skip=true -Dmaven.install.skip=true -Dmaven.test.skip=true'
+                // Archive the generated JAR file
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
             post {
                 success {
-                    archiveArtifacts artifacts: '*/.jar', fingerprint: true
                     echo 'Packaging succeeded!'
                 }
                 failure {
