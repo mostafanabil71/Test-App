@@ -9,16 +9,14 @@ pipeline {
         }
         
         stage('Install Node.js Dependencies') {
-            steps {{
+            steps {
                     sh 'npm install'
-                }
             }
         }
         
         stage('Build Application') {
-            steps { {
+            steps {
                     sh 'npm run build'
-                }
             }
         }
         
