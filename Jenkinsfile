@@ -22,7 +22,11 @@ pipeline {
         
         stage('Package with Maven') {
             steps {
-                sh 'mvn clean package'
+                // Run npm command to create a production-ready build
+                sh 'npm run build:prod'
+                
+                // Use exec command to run Maven
+                exec cmd: 'mvn clean package', returnStatus: true
             }
             post {
                 success {
