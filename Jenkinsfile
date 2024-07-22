@@ -15,7 +15,7 @@ pipeline {
           sh script: '''\
             pwd
             echo $PATH
-            . /home/ubuntu/.nvm/nvm.sh
+            /home/jenkins/.nvm/nvm.sh
             nvm list'''.stripIndent()
         }
       }
