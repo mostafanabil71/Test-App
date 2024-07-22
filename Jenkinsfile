@@ -16,7 +16,7 @@ pipeline {
         
         stage('Build Application') {
             steps {
-                    sh 'npm run build'
+                sh 'mvn clean install -DskipTests'  // Skip tests during build for faster execution
             }
         }
         
