@@ -12,7 +12,7 @@ pipeline {
       steps {
         script {
           sh '''
-            nvm use 14  # Specify the Node.js version you have installed (e.g., v14.x.x)
+            nvm use v14  # Specify the Node.js version you have installed (e.g., v14.x.x)
             npm install
           '''
         }
