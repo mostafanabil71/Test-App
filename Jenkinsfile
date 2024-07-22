@@ -8,11 +8,23 @@ pipeline {
       }
     }
 
+
+        stage('NVM Check') {
+      steps {
+        script {
+          sh script: '''\
+            pwd
+            echo $PATH
+            . ~/.nvm/nvm.sh
+            nvm list'''.stripIndent()
+        }
+      }
+    }
+
     stage('Install Node.js Dependencies') {
       steps {
         script {
           sh '''
-            nvm use v14  # Specify the Node.js version you have installed (e.g., v14.x.x)
             npm install
           '''
         }
