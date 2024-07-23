@@ -8,19 +8,6 @@ pipeline {
       }
     }
 
-
-        stage('NVM Check') {
-      steps {
-        script {
-          sh script: '''\
-            pwd
-            echo $PATH
-            . /var/lib/jenkins/.nvm/nvm.sh
-            nvm list'''.stripIndent()
-        }
-      }
-    }
-
     stage('Install Node.js Dependencies') {
       steps {
         script {
