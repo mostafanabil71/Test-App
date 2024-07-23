@@ -12,6 +12,7 @@ pipeline {
       steps {
         script {
           sh '''
+            nvm use 0.39.7
             npm install
           '''
         }
